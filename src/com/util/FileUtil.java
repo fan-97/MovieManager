@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.util.StorageCache.*;
+
 /**
  * 文件工具类
  */
@@ -59,10 +61,6 @@ public class FileUtil {
         }
     }
 
-//    public List readFile(String filePath, Class classType) throws Exception {
-//        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
-//
-//    }
 
     public static Map<String, String> getAllFiledValues(Object obj) throws IllegalAccessException, InstantiationException {
         Map<String, String> values = new HashMap<>();
@@ -78,12 +76,12 @@ public class FileUtil {
         return values;
     }
 
-    public static void main(String[] args) {
-        try {
-            writeObject(new Comment("admin", "杀破狼", 8.9, "www.baidu.com", 1000L));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+//            writeObject(new Comment(COMMENT_CACHE_LIST.size()+1,"admin", "杀破狼", 8.9, "www.baidu.com", 1000L));
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

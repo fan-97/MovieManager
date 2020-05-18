@@ -8,6 +8,7 @@ import java.util.Objects;
  * 影片
  */
 public class Movie implements Serializable {
+    private Integer id;
     @Chinese("电影名")
     private String name;
     @Chinese("上映年份")
@@ -24,13 +25,22 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(String name, String year, String author, String protagonist, String company, String level) {
+    public Movie(Integer id,String name, String year, String author, String protagonist, String company, String level) {
+        this.id =id;
         this.name = name;
         this.year = year;
         this.author = author;
         this.protagonist = protagonist;
         this.company = company;
         this.level = level;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -91,12 +101,7 @@ public class Movie implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
-        return Objects.equals(name, movie.name) &&
-                Objects.equals(year, movie.year) &&
-                Objects.equals(author, movie.author) &&
-                Objects.equals(protagonist, movie.protagonist) &&
-                Objects.equals(company, movie.company) &&
-                Objects.equals(level, movie.level);
+        return this.id.equals(movie.id);
     }
 
     @Override

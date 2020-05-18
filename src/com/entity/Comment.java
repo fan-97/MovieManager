@@ -7,6 +7,7 @@ import java.util.Objects;
  * 影评
  */
 public class Comment implements Serializable {
+    private Integer id;
     @Chinese("用户")
     private String user;
     @Chinese("影片")
@@ -21,12 +22,21 @@ public class Comment implements Serializable {
     public Comment() {
     }
 
-    public Comment(String user, String movie, double score, String url, long total) {
+    public Comment(Integer id,String user, String movie, double score, String url, long total) {
+        this.id = id;
         this.user = user;
         this.movie = movie;
         this.score = score;
         this.url = url;
         this.total = total;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUser() {
@@ -79,11 +89,7 @@ public class Comment implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
-        return Double.compare(comment.score, score) == 0 &&
-                total == comment.total &&
-                user.equals(comment.user) &&
-                movie.equals(comment.movie) &&
-                url.equals(comment.url);
+        return this.id.equals(comment.id);
     }
 
     @Override
